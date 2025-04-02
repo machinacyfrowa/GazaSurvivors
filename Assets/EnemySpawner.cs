@@ -17,8 +17,8 @@ public class EnemySpawner : MonoBehaviour
             //dla ka¿dego dziecka transformu SpawnPositions dodajemy jego GameObject do listy spawnPoints
             spawnPoints.Add(child.position);
         }
-        //wywo³ujemy funkcjê Spawn co 2 sekundy
-        InvokeRepeating("Spawn", 0, 2);
+        //wywo³ujemy funkcjê Spawn co 1 sekunde
+        InvokeRepeating("Spawn", 0, 1);
     }
     void Spawn()
     {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,11 +12,15 @@ public class PlayerController : MonoBehaviour
     Rigidbody rb;
     // Start is called before the first frame update
     public List<GameObject> enemies;
+    public GameObject gun;
+    public GameObject bulletSpawn;
+    public GameObject bulletPrefab;
     void Start()
     {
         //pobieramy odniesienie do komponentu Rigidbody
         rb = GetComponent<Rigidbody>();
         enemies = new List<GameObject>();
+        InvokeRepeating("Shoot", 0, 2);
     }
 
     // Update is called once per frame
@@ -45,5 +50,21 @@ public class PlayerController : MonoBehaviour
         Vector3 targetPosition = transform.position + movementVector * Time.fixedDeltaTime * speed;
         //przesuwamy gracza przy u¿yciu MovePosition
         rb.MovePosition(targetPosition);
+    }
+    void Shoot()
+    {
+        //sprawdz czy mamy jakiœ wrogów na liœcie
+        if(enemies.Count > 0)
+        {
+            //obróæ "pistolet" w kierunku najbli¿szego wroga
+            gun.transform.LookAt(enemies[0].transform);
+            //stwórz pocisk na wspó³rzêdnych bulletSpawn z rotacj¹ "pistoletu" i zapisz referencje do niego do bullet
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, gun.transform.rotation);
+            //rozpêdŸ pocisk w przód
+            bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 1000);
+            //skasuj najbli¿szego wroga
+            Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
+            Debug.Log("Pif paf!");
+        }
     }
 }
