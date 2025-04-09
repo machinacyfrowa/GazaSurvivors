@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 144;
         //znajdujemy gracza na scenie
         player = GameObject.FindGameObjectWithTag("Player");
         //zapamiêtujemy pozycje kamery wzglêdem gracza
