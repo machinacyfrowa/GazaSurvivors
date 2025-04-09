@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
         if(other.gameObject.CompareTag("PlayerWeapon"))
         {
             Destroy(gameObject);
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
         }
     }
 }

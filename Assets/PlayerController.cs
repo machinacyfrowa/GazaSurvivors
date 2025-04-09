@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public List<GameObject> enemies;
     public GameObject gun;
     public GameObject bulletSpawn;
+    public GameObject swordHandle;
     public GameObject bulletPrefab;
     void Start()
     {
@@ -39,6 +40,16 @@ public class PlayerController : MonoBehaviour
         //sk³adnia LINQ - to co jest w nawiasie po orderby czytamy jako
         //dla ka¿dego wroga w liœcie enemies oblicz odleg³oœæ od gracza i posortuj listê wed³ug tej odleg³oœci
         enemies = enemies.OrderBy(enemy => Vector3.Distance(enemy.transform.position, transform.position)).ToList();
+        //je¿eli przeciwnik znajduje siê bli¿ej ni¿ 2 metry to go atakujemy
+        if (enemies.Count > 0 && Vector3.Distance(transform.position, enemies[0].transform.position) < 2f)
+        {
+            swordHandle.SetActive(true);
+            swordHandle.transform.Rotate(0, 2f, 0);
+        }
+        else
+        {
+            swordHandle.SetActive(false);
+        }
     }
     void FixedUpdate()
     {
@@ -62,6 +73,7 @@ public class PlayerController : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, gun.transform.rotation);
             //rozpêdŸ pocisk w przód
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 1000);
+            Destroy(bullet, 2f); //zniszcz pocisk po 2 sekundach
             //skasuj najbli¿szego wroga
             //Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
             Debug.Log("Pif paf!");

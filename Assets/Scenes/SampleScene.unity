@@ -218,6 +218,7 @@ MonoBehaviour:
   enemies: []
   gun: {fileID: 1046526293}
   bulletSpawn: {fileID: 1951470506}
+  swordHandle: {fileID: 1380451905}
   bulletPrefab: {fileID: 8278216679330247522, guid: 7b0c19ef053204f4e8ae1b01aa04789b, type: 3}
 --- !u!136 &631146976
 CapsuleCollider:
@@ -582,7 +583,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

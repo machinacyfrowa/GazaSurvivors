@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
             spawnPoints.Add(child.position);
         }
         //wywo³ujemy funkcjê Spawn co 1 sekunde
-        InvokeRepeating("Spawn", 0, 1);
+        InvokeRepeating("Spawn", 0, 0.5f);
     }
     void Spawn()
     {
