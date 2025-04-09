@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
     }
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Bullet"))
+        if(other.gameObject.CompareTag("PlayerWeapon"))
         {
             Destroy(gameObject);
             Destroy(other.gameObject);
