@@ -6,10 +6,12 @@ public class EnemyController : MonoBehaviour
 {
     GameObject player;
     public float speed = 4f;
+    LevelManager lm;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class EnemyController : MonoBehaviour
     {
         if(other.gameObject.CompareTag("PlayerWeapon"))
         {
+            lm.AddPoints(1);
             Destroy(gameObject);
             //Destroy(other.gameObject);
         }
