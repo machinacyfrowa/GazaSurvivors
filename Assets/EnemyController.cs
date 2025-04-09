@@ -15,12 +15,12 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(player.transform);
-        transform.Translate(Vector3.forward * Time.deltaTime * speed);
+        
     }
     private void FixedUpdate()
     {
-        
+        transform.LookAt(player.transform);
+        transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
     public void OnTriggerEnter(Collider other)
     {
