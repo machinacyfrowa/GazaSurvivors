@@ -215,6 +215,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   enemies: []
+  gun: {fileID: 1046526293}
+  bulletSpawn: {fileID: 1951470506}
+  bulletPrefab: {fileID: 8278216679330247522, guid: 7b0c19ef053204f4e8ae1b01aa04789b, type: 3}
 --- !u!136 &631146976
 CapsuleCollider:
   m_ObjectHideFlags: 0

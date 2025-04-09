@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //docelowa pozycja kamery
         //wczesniej zapamiêtaliœmy sobie oddleg³oœæ kamery od gracza i teraz j¹ dodajemy

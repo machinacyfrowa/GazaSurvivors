@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
             //rozpêdŸ pocisk w przód
             bullet.GetComponent<Rigidbody>().AddForce(bullet.transform.forward * 1000);
             //skasuj najbli¿szego wroga
-            Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
+            //Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
             Debug.Log("Pif paf!");
         }
     }
