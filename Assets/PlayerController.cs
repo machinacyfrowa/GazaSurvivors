@@ -16,8 +16,12 @@ public class PlayerController : MonoBehaviour
     public GameObject bulletSpawn;
     public GameObject swordHandle;
     public GameObject bulletPrefab;
+    //referencja do komponentu LevelManager
+    LevelManager lm;
     void Start()
     {
+        //przypisujemy level manager ze sceny do zmiennej lm
+        lm = GameObject.Find("LevelManager").GetComponent<LevelManager>();
         //pobieramy odniesienie do komponentu Rigidbody
         rb = GetComponent<Rigidbody>();
         enemies = new List<GameObject>();
@@ -77,6 +81,17 @@ public class PlayerController : MonoBehaviour
             //skasuj najbli¿szego wroga
             //Destroy(enemies[0]); //czy to jest bezpieczne? zostanie refencja do obiektu w enemies?
             Debug.Log("Pif paf!");
+        }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        //sprawdzamy czy gracz zderzy³ siê z wrogiem
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            //zmniejszamy zdrowie gracza
+            lm.ReducePlayerHealth(5);
+            //niszczymy wroga
+            //Destroy(collision.gameObject);
         }
     }
 }
