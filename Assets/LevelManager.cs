@@ -7,11 +7,12 @@ public class LevelManager : MonoBehaviour
 {
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI scoreText;
-    int playerHealth = 100;
+    int playerHealth;
     int points;
     // Start is called before the first frame update
     void Start()
     {
+        playerHealth = 100;
         points = 0;
     }
 
@@ -20,7 +21,6 @@ public class LevelManager : MonoBehaviour
     {
         scoreText.text = "Wynik: " + points.ToString();
         healthText.text = "HP: " + playerHealth.ToString();
-
     }
     public void AddPoints(int pointsToAdd)
     {
