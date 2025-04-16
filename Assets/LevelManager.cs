@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    public TextMeshProUGUI healthText;
     public TextMeshProUGUI scoreText;
+    int playerHealth = 100;
     int points;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +19,21 @@ public class LevelManager : MonoBehaviour
     void Update()
     {
         scoreText.text = "Wynik: " + points.ToString();
+        healthText.text = "HP: " + playerHealth.ToString();
+
     }
     public void AddPoints(int pointsToAdd)
     {
         points += pointsToAdd;
+    }
+    public void ReducePlayerHealth(int amount)
+    {
+        playerHealth -= amount;
+        if (playerHealth <= 0)
+        {
+            // zatrzymaj grê
+            Time.timeScale = 0;
+            Debug.Log("Game Over");
+        }
     }
 }
