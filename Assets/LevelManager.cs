@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
+    public GameObject gameOverPanel;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI scoreText;
     int playerHealth;
@@ -31,9 +33,16 @@ public class LevelManager : MonoBehaviour
         playerHealth -= amount;
         if (playerHealth <= 0)
         {
+            gameOverPanel.SetActive(true);
             // zatrzymaj grê
             Time.timeScale = 0;
             Debug.Log("Game Over");
         }
+    }
+    public void RestartGame()
+    {
+        // restartuj grê
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
