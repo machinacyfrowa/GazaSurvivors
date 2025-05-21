@@ -39,6 +39,10 @@ public class GameManager : MonoBehaviour
     {
 
     }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
     public void NewGame()
     {
         SceneManager.LoadScene("CharacterSelection");

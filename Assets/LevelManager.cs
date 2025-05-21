@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
         //gre trzeba odpauzowaæ
         Time.timeScale = 1;
         //przechodzimy do menu g³ównego
-        //TODO
+        GameManager.Instance.MainMenu();
     }
     public void ExitGame()
     {
