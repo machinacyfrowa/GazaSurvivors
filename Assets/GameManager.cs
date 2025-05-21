@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum Side { Israel, Palestine };
+
 public class GameManager : MonoBehaviour
 {
+    //to bedzie przechowywalo wybor strony przez gracza
+    public Side side; 
+
     //to jest instancja (wyst¹pienie) klasy GameManager
     //jedyne s³uszne - zawsze w programie mo¿e byæ tylko jeden
     //GameManager - singleton
@@ -23,7 +28,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         //je¿eli nie ma GameManagera to zapisujemy ten obiekt jako instancjê
-        if(Instance == null)
+        if (Instance == null)
             Instance = this;
 
         //ta funkcja zpobiega usuniêciu gameManagera z gry przy zmianie sceny
@@ -32,7 +37,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     public void NewGame()
     {
@@ -41,5 +46,10 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void StartGame(Side s)
+    {
+        side = s;
+        SceneManager.LoadScene("SampleScene");
     }
 }
